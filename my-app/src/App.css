@@ -1,0 +1,48 @@
+/* sets the style for the calculator */
+.calculator {
+  background: #222;
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+  margin: 0 auto;
+}
+
+/* sets the style for the display box (e.g. buttons) */
+.display {
+  background: #444;
+  color: #fff;
+  font-size: 2rem;
+  text-align: right;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  min-height: 50px;
+}
+
+/* makes the buttons appear in a grid */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  padding: 15px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+/* styling for the equals button */
+.equals {
+  background: #ff9500;
+  color: white;
+  grid-column: span 2;
+}
+
+/* styling for the AC button */
+.clear {
+  grid-column: span 3;
+  background: #a5a5a5;
+}
