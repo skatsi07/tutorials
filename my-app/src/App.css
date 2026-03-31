@@ -45,4 +45,5 @@ button {
 .clear {
   grid-column: span 3;
   background: #a5a5a5;
+  color: white;
 }

@@ -2,6 +2,9 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
+  // Theme state
+  const [isPink, setIsPink] = useState(false);
+
   // set the input for the calculator
   const [input, setInput] = useState(" ")
 
@@ -28,40 +31,51 @@ function App() {
   };
 
   return (
-    <section id = "center">
-      <h1>React Calculator</h1>
+    <div className={isPink ? "bg-pink" : "bg-blue"}>
+      {/* Absolute positioned toggle button to avoid interfering with the center flex layout */}
+      <button 
+        onClick={() => setIsPink(!isPink)} 
+        className="btn" 
+        style={{ position: 'absolute', top: '20px', right: '20px' }}
+      >
+        Toggle Theme
+      </button>
 
-      <div className="calculator">
-        {/* shows the input */}
-        <div className="display">
-          {input || "0"}
+      <section id="center">
+        <h1>React Calculator</h1>
+
+        <div className="calculator">
+          {/* shows the input */}
+          <div className="display">
+            {input || "0"}
+          </div>
+
+          {/* sets up all the event listners for particular buttons */}
+          <div className="keypad">
+            <button onClick={clear} className="clear">AC</button>
+            <button onClick={() => handleClick("/")}>÷</button>
+
+            <button onClick={() => handleClick("7")}>7</button>
+            <button onClick={() => handleClick("8")}>8</button>
+            <button onClick={() => handleClick("9")}>9</button>
+            <button onClick={() => handleClick("*")}>*</button>
+
+            <button onClick={() => handleClick("4")}>4</button>
+            <button onClick={() => handleClick("5")}>5</button>
+            <button onClick={() => handleClick("6")}>6</button>
+            <button onClick={() => handleClick("-")}>-</button>
+
+            <button onClick={() => handleClick("1")}>1</button>
+            <button onClick={() => handleClick("2")}>2</button>
+            <button onClick={() => handleClick("3")}>3</button>
+            <button onClick={() => handleClick("+")}>+</button>
+
+            <button onClick={() => handleClick("0")} className="zero">0</button>
+            <button onClick={calculate} className="equals">=</button>
+          </div>
         </div>
-
-      {/* sets up all the event listners for particular buttons */}
-      <div className="keypad">
-        <button onClick={clear} className="clear">AC</button>
-        <button onClick={() => handleClick("/")}>÷</button>
-
-        <button onClick={() => handleClick("7")}>7</button>
-        <button onClick={() => handleClick("8")}>8</button>
-        <button onClick={() => handleClick("9")}>9</button>
-        <button onClick={() => handleClick("*")}>*</button>
-
-        <button onClick={() => handleClick("4")}>4</button>
-        <button onClick={() => handleClick("5")}>5</button>
-        <button onClick={() => handleClick("6")}>6</button>
-        <button onClick={() => handleClick("-")}>-</button>
-
-        <button onClick={() => handleClick("1")}>1</button>
-        <button onClick={() => handleClick("2")}>2</button>
-        <button onClick={() => handleClick("3")}>3</button>
-        <button onClick={() => handleClick("+")}>+</button>
-
-        <button onClick={() => handleClick("0")} className="zero">0</button>
-        <button onClick={calculate} className="equals">=</button>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
 
